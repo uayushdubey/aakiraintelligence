@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakira Intelligence — AI Innovation, Data Organisation, Automation Tools</title>
+    <meta name="description" content="Aakira Intelligence is a builder-first AI product studio creating intelligent systems, automation tools, and ML-powered platforms for healthcare, finance, and enterprise productivity.">
+    <meta name="keywords" content="AI automation, AI product studio, workflow automation, ML systems, enterprise AI, data organisation, Aakira Intelligence">
+    
+    <meta property="og:title" content="Aakira Intelligence — AI Innovation, Data Organisation, Automation Tools">
+    <meta property="og:description" content="Aakira Intelligence is a builder-first AI product studio creating intelligent systems, automation tools, and ML-powered platforms for healthcare, finance, and enterprise productivity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aakiraintelligence.com">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            transition: transform 0.3s ease-out;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 5%;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: #bbb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #fff;
+        }
+        
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(2rem, 5vw, 5rem);
+            font-weight: 700;
+            letter-spacing: clamp(0.2rem, 1vw, 0.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.8rem);
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: clamp(0.1rem, 0.5vw, 0.3rem);
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-heading {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 0.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        .about-content li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #bbb;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .about-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .about-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .product-card h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #bbb;
+        }
+        
+        .founder-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .founder-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+        
+        .founder-content ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        .founder-content li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #bbb;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .founder-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #bbb;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+            
+            .logo {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.2rem, 6vw, 2rem);
+                letter-spacing: 0.15rem;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                letter-spacing: 0.1rem;
+            }
+            
+            section {
+                padding: 3rem 5%;
+            }
+            
+            .glass-panel {
+                padding: 1.5rem;
+            }
+            
+            .about-content p,
+            .about-content li,
+            .founder-content p,
+            .founder-content li,
+            .contact-content p {
+                font-size: 0.95rem;
+            }
+            
+            .section-heading {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+                letter-spacing: 0.1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .product-card {
+                padding: 1.5rem;
+            }
+            
+            .product-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .contact-link {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 1rem;
+                letter-spacing: 0.1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 0.08rem;
+            }
+            
+            .logo {
+                font-size: 0.65rem;
+            }
+            
+            .nav-links {
+                gap: 0.7rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-bg" id="parallaxBg"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">AAKIRA INTELLIGENCE</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#founder">Founder</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>AI • DATA • AUTOMATION</h1>
+        <div class="hero-subtitle">Simple • Efficient • Smart</div>
+    </section>
+    
+    <section id="about" class="fade-in">
+        <h2 class="section-heading">COMPANY</h2>
+        <div class="glass-panel about-content">
+            <p><strong>Aakira Intelligence</strong> is a builder-first AI product studio focused on transforming messy, real-world workflows into clean, intelligent systems.</p>
+            
+            <p>We design and develop products that sit at the intersection of code, data, and design — from automation tools and ML-powered decision systems to domain-specific platforms in areas like healthcare, finance, and productivity.</p>
+            
+            <p><strong>Our philosophy is simple:</strong></p>
+            <ul>
+                <li>Start from the problem, not the hype</li>
+                <li>Ship working products, not just ideas</li>
+                <li>Blend engineering depth with product thinking and user experience</li>
+            </ul>
+            
+            <p>If a process is repetitive, data-heavy, or just badly designed, Aakira Intelligence exists to reimagine it with AI.</p>
+            
+            <p><strong>We like to build and innovate.</strong></p>
+        </div>
+    </section>
+    
+    <section id="products" class="fade-in">
+        <h2 class="section-heading">OUR PRODUCTS</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <h3>AI INNOVATION</h3>
+                <p>Custom intelligent systems improving automation and decision-making at scale.</p>
+            </div>
+            <div class="product-card">
+                <h3>DATA ORGANISATION</h3>
+                <p>Pipelines that convert raw data into clean, reliable, structured intelligence.</p>
+            </div>
+            <div class="product-card">
+                <h3>AUTOMATION TOOLS</h3>
+                <p>Frameworks that remove repetitive processes and optimize operations.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="founder" class="fade-in">
+        <h2 class="section-heading">FOUNDER</h2>
+        <div class="glass-panel founder-content">
+            <p>Hi, I'm <strong>Ayush</strong>, the founder of Aakira Intelligence. I'm an engineer who loves building smart products that merge code, data, and design.</p>
+            
+            <p><strong>Before starting Aakira Intelligence, I worked on:</strong></p>
+            <ul>
+                <li>AI-driven trading and ML systems as a System Developer Intern at Crazysoft Algobot Global LLP</li>
+                <li>Electronic Health Record (EHR) systems as a Junior Research Assistant, improving medical workflows across multiple departments</li>
+            </ul>
+            
+            <p>Alongside technical work, I've led student teams and innovation initiatives, shaping how I think about ownership, leadership, and building products end-to-end — from idea to deployment.</p>
+            
+            <p>Aakira Intelligence is my way of scaling that mindset: building things that actually get used, and making technology feel less like a buzzword and more like an everyday superpower.</p>
+        </div>
+    </section>
+    
+    <section id="contact" class="fade-in">
+        <h2 class="section-heading">LET'S CONNECT</h2>
+        <div class="glass-panel contact-content">
+            <p>If you want to collaborate, discuss a problem, or explore what we can build together:</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/ayush-kumar-dubey-84113623a" target="_blank" class="contact-link">LinkedIn</a>
+                <a href="mailto:work.ayushkumardubey@gmail.com" class="contact-link">Email</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Aakira Intelligence — All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Parallax background effect
+        document.addEventListener('mousemove', (e) => {
+            const parallaxBg = document.getElementById('parallaxBg');
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            parallaxBg.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        
+        // Fade-in on scroll with IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
